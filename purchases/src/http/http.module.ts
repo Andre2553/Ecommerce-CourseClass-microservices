@@ -12,7 +12,7 @@ import { ProductsService } from 'src/services/products.service';
     DatabaseModule,
     GraphQLModule.forRoot({
       driver: ApolloDriver,
-      autoSchemaFile: path.resolve(process.cwd(), 'scr/schema.gql'),
+      autoSchemaFile: path.resolve(process.cwd(), 'src/schema.gql'),
     }),
   ],
   providers: [ProductResolver, ProductsService],
