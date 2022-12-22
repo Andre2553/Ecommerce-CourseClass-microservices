@@ -8,6 +8,7 @@ import { ProductResolver } from './graphql/resolvers/product.resolver';
 import { ProductsService } from 'src/services/products.service';
 import { PurchasesService } from 'src/services/purchases.service';
 import { PurchasesResolver } from './graphql/resolvers/purchases.resolver';
+import { CustomersService } from 'src/services/customers.service';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -22,6 +23,7 @@ import { PurchasesResolver } from './graphql/resolvers/purchases.resolver';
     ProductsService,
     PurchasesService,
     PurchasesResolver,
+    CustomersService,
   ],
 })
 export class HttpModule {}
