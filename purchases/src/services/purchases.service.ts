@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma/prisma.service';
-import { CreatePurchaseInput } from 'src/http/graphql/inputs/create-purchase-input';
 interface CreateProductParams {
   customerId: string;
   productId: string;
@@ -12,6 +11,15 @@ export class PurchasesService {
 
   async listAllPurchases() {
     return this.prisma.purchase.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
+
+  async listAllFromCustomer(customerId: string) {
+    return this.prisma.purchase.findMany({
+      where: { customerId },
       orderBy: {
         createdAt: 'desc',
       },
