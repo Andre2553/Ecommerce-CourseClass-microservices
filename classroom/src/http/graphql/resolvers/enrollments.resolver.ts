@@ -21,7 +21,7 @@ export class EnrollmentsResolver {
   }
   @ResolveField(() => [Student])
   students(@Parent() enrollment: Enrollment) {
-    return this.studentsService.getStudentByAId(enrollment.studentId);
+    return this.studentsService.getStudentId(enrollment.studentId);
   }
 
   @ResolveField(() => [Course])
