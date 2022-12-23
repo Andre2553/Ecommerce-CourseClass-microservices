@@ -3,6 +3,7 @@ import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AuthorizationGuard } from '../../../http/auth/authorization.guard';
 import { CoursesService } from '../../../services/courses.service';
+import { CreateCourseInput } from '../inputs/create-course-input';
 import { Course } from '../models/course';
 
 
@@ -14,6 +15,12 @@ export class CoursesResolver {
   @UseGuards(AuthorizationGuard)
   courses() {
     return this.coursesService.listAllCourses();
+  }
+
+  @Mutation(() => Course)
+  @UseGuards(AuthorizationGuard)
+  createCourse(@Args('data') data: CreateCourseInput) {
+    return this.coursesService.createCourse(data);
   }
 
 
