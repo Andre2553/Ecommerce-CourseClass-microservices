@@ -8,7 +8,7 @@ import { ConfigService } from '@nestjs/config';
 import { expressJwtSecret, GetVerificationKey } from 'jwks-rsa';
 import { promisify } from 'node:util';
 import { expressjwt } from 'express-jwt';
-import { GqlExecutionContext } from '@nestjs/graphql/dist/services';
+import { GqlExecutionContext } from '@nestjs/graphql';
 
 @Injectable()
 export class AuthorizationGuard implements CanActivate {
