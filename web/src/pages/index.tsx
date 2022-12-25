@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import { getSession } from '@auth0/nextjs-auth0';
+import { getAccessToken, getSession } from '@auth0/nextjs-auth0';
 
 
 export default function Home() {
@@ -11,6 +11,8 @@ export default function Home() {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
   const session = await getSession(req, res);
+  const token = getAccessToken(req,res);
+  console.log(token);
   if (session) {
     return {
       redirect: {

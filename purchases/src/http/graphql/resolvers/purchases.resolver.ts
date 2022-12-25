@@ -26,7 +26,7 @@ export class PurchasesResolver {
   }
 
   @UseGuards(AuthorizationGuard)
-  @Mutation(()=>Product)
+  @Mutation(()=>Purchase)
   async createPurchase(
     @Args('data') data: CreatePurchaseInput,
     @CurrentUser() user : AuthUser
