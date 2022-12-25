@@ -12,24 +12,25 @@ directive @requires(fields: String!) on FIELD_DEFINITION
 
 directive @provides(fields: String!) on FIELD_DEFINITION
 
-type Product {
+type Course {
   id: ID!
   title: String!
   slug: String!
 }
 
-type Purchase {
-  id: ID!
-  status: PurchaseStatus!
-  createdAt: DateTime!
-  product: Product
+type User {
+  authUserId: ID!
+  enrollments: [Enrollment!]!
 }
 
-"""Purchase status"""
-enum PurchaseStatus {
-  PENDING
-  APPROVED
-  FAILED
+type Enrollment {
+  id: ID!
+  student: User!
+  course: Course!
+  canceledAt: DateTime
+  createdAt: DateTime!
+  students: [User!]!
+  courses: [Course!]!
 }
 
 """
@@ -37,26 +38,17 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type User {
-  authUserId: ID!
-  purchases: [Purchase!]!
-}
-
 type Query {
-  products: [Product!]!
-  purchases: [Purchase!]!
-  me: User!
+  courses: [Course!]!
+  course(id: String!): Course!
+  enrollment: [Enrollment!]!
+  students: [User!]!
 }
 
 type Mutation {
-  createProduct(data: CreateProductInput!): Product!
-  createPurchase(data: CreatePurchaseInput!): Purchase!
+  createCourse(data: CreateCourseInput!): Course!
 }
 
-input CreateProductInput {
+input CreateCourseInput {
   title: String!
-}
-
-input CreatePurchaseInput {
-  productId: String!
 }
