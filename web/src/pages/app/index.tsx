@@ -1,8 +1,12 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { getAccessToken, withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { withApollo } from '../../lib/withApollo';
+import { useGetProductsQuery } from '../../graphql/generated/graphql';
 
-export default function Home(){
+
+function Home(){
   const {user} = useUser()
+  const {data, loading, error} = useGetProductsQuery();
   return (
     <div>
       <h1>Home</h1>
@@ -20,3 +24,5 @@ export const getServerSideProps = withPageAuthRequired({
   }
     
 });
+
+export default withApollo(Home)

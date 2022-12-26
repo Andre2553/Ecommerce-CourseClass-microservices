@@ -1,10 +1,14 @@
+import { ApolloProvider } from '@apollo/client';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { getApolloClient } from '../lib/withApollo';
 
 function MyApp({ Component, pageProps }) {
 
   return (
   <UserProvider>
+    <ApolloProvider client={getApolloClient()}>
     <Component {...pageProps} />
+    </ApolloProvider>
   </UserProvider>
   )
 }
