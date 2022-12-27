@@ -27,7 +27,8 @@ export class PurchaseController {
     private enrollmentsService: EnrollmentsService,
   ) {}
   @EventPattern('purchases.new-purchase')
-  async purchaseCreated(@Payload('value') payload: PurchaseCreatedPayload) {
+  async purchaseCreated(@Payload() payload: PurchaseCreatedPayload) {
+    console.log(payload);
     const { authUserId } = payload.customer;
     const { title, slug } = payload.product;
     let student = await this.studentsService.getStudentByAuthId(authUserId);
