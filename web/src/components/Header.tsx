@@ -31,8 +31,8 @@ export function Header() {
                     className="h-8 w-auto sm:h-10"
                     src="https://tailwindui.com/img/logos/workflow-mark-teal-200-cyan-400.svg"
                     alt=""
-                    width={100}
-                    height={100}
+                    width={50}
+                    height={50}
 
                   />
                 </a>
@@ -60,7 +60,7 @@ export function Header() {
           { user ? (
             <div className="hidden md:flex md:items-center md:space-x-6">
               <Link href="/app/courses">
-                <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700">Meus cursos</a>
+                <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700">My Courses</a>
               </Link>
               <Link href="/api/auth/logout">
                 <a className="text-base font-medium text-white hover:text-gray-300">Logout</a>

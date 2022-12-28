@@ -228,7 +228,7 @@ function Home() {
             <div className="relative bg-gray-50 py-16 sm:py-24 lg:py-32">
               <div className="relative">
                 <div className="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-                  <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Aprenda mais</h2>
+                  <h2 className="text-base font-semibold tracking-wider text-cyan-600 uppercase">Learn more</h2>
                   <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                     Last post of our blog
                   </p>
@@ -237,7 +237,7 @@ function Home() {
                   {blogPosts.map((post) => (
                     <div key={post.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
                       <div className="flex-shrink-0">
-                        <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+                        <Image className="h-48 w-full object-cover" src={post.imageUrl} alt="" width={400} height={200} />
                       </div>
                       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                         <div className="flex-1">
