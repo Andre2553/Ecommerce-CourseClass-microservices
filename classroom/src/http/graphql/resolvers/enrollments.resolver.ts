@@ -16,16 +16,17 @@ export class EnrollmentsResolver {
 
   @Query(() => [Enrollment])
   @UseGuards(AuthorizationGuard)
-  enrollment() {
+  enrollments() {
     return this.enrollmentsService.listAllEnrollment();
   }
-  @ResolveField(() => [Student])
-  students(@Parent() enrollment: Enrollment) {
+
+  @ResolveField()
+  student(@Parent() enrollment: Enrollment) {
     return this.studentsService.getStudentId(enrollment.studentId);
   }
 
-  @ResolveField(() => [Course])
-  courses(@Parent() enrollment: Enrollment) {
+  @ResolveField()
+  course(@Parent() enrollment: Enrollment) {
     return this.coursesService.getCourseById(enrollment.courseId);
   }
 

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { UseGuards } from '@nestjs/common';
-import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Parent, Query, ResolveField, Resolver, ResolveReference } from '@nestjs/graphql';
 import { AuthorizationGuard } from '../../../http/auth/authorization.guard';
 import { EnrollmentsService } from '../../../services/enrollments.service';
 import { StudentsService } from '../../../services/students.service';
@@ -28,6 +28,11 @@ export class StudentResolver {
   @ResolveField(() => [Enrollment])
   enrollments(@Parent() student: Student) {
     return this.enrollmentdService.listEnrollmentByStudentId(student.id);
+  }
+
+  @ResolveReference()
+  resolveReference(reference: { authUserId: string }) {
+    return this.studentsService.getStudentByAuthId(reference.authUserId);
   }
 
 }

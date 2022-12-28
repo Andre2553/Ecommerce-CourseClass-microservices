@@ -29,8 +29,6 @@ type Enrollment {
   course: Course!
   canceledAt: DateTime
   createdAt: DateTime!
-  students: [User!]!
-  courses: [Course!]!
 }
 
 """
@@ -41,7 +39,7 @@ scalar DateTime
 type Query {
   courses: [Course!]!
   course(id: String!): Course!
-  enrollment: [Enrollment!]!
+  enrollments: [Enrollment!]!
   students: [User!]!
 }
 
