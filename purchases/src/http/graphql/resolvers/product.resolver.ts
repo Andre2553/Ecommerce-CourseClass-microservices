@@ -11,7 +11,6 @@ export class ProductResolver {
   constructor(private productsService: ProductsService) {}
 
   @Query(() => [Product])
-  @UseGuards(AuthorizationGuard)
   products() {
     return this.productsService.listAllProducts();
   }
